@@ -1,4 +1,5 @@
 import {addEscapeEvent} from './utils';
+import {resetValidation, setValidation} from './validation';
 
 const uploadOverlayElement = document.querySelector('.img-upload__overlay');
 const imageFormElement = document.querySelector('#upload-select-image');
@@ -19,14 +20,23 @@ const onEscapeKeyDown = (evt) => {
   }
 };
 
+const onImageFormSubmit = (evt) => {
+  if (!setValidation()) {
+    evt.preventDefault();
+  }
+};
+
 function closeModal() {
   imageFormElement.reset();
+  resetValidation();
 
   document.body.classList.remove('modal-open');
   uploadOverlayElement.classList.add('hidden');
 
   closeButtonElement.removeEventListener('click', onCloseButtonClick);
   document.removeEventListener('keydown', onEscapeKeyDown);
+
+  imageFormElement.removeEventListener('submit', onImageFormSubmit);
 }
 
 function openModal() {
@@ -35,6 +45,8 @@ function openModal() {
 
   closeButtonElement.addEventListener('click', onCloseButtonClick);
   document.addEventListener('keydown', onEscapeKeyDown);
+
+  imageFormElement.addEventListener('submit', onImageFormSubmit);
 }
 
 export const initImageForm = () => imageFormElement.filename.addEventListener('change', onUploadFileChange);
