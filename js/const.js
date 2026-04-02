@@ -10,3 +10,5 @@ export const ErrorMessage = {
   HASHTAG_INVALID_UNIQUE: 'Хэш-теги не должны повторяться',
   COMMENT_TOO_LONG: `Длина комментария не должна превышать ${COMMENT_MAX_LENGTH} символов`
 };
+
+export const COMMENTS_PER_LOAD = 5;
