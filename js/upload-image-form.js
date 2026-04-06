@@ -1,5 +1,6 @@
 import {addEscapeEvent} from './utils';
 import {resetValidation, setValidation} from './validation';
+import {activateImageScale, deactivateImageScale} from './image-scale';
 
 const uploadOverlayElement = document.querySelector('.img-upload__overlay');
 const imageFormElement = document.querySelector('#upload-select-image');
@@ -36,6 +37,8 @@ function closeModal() {
   closeButtonElement.removeEventListener('click', onCloseButtonClick);
   document.removeEventListener('keydown', onEscapeKeyDown);
 
+  deactivateImageScale();
+
   imageFormElement.removeEventListener('submit', onImageFormSubmit);
 }
 
@@ -45,6 +48,8 @@ function openModal() {
 
   closeButtonElement.addEventListener('click', onCloseButtonClick);
   document.addEventListener('keydown', onEscapeKeyDown);
+
+  activateImageScale();
 
   imageFormElement.addEventListener('submit', onImageFormSubmit);
 }
