@@ -1,9 +1,7 @@
 import {renderGallery} from './gallery';
-import {getPictures} from './data';
 import {initImageForm} from './upload-image-form';
+import {getData} from './api';
+import {loadFailMessage} from './messages';
 
-const PICTURES_COUNT = 25;
-
-renderGallery(getPictures(PICTURES_COUNT));
-
-initImageForm();
+getData(renderGallery, loadFailMessage)
+  .then(initImageForm());
