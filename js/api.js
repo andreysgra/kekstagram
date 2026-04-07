@@ -13,3 +13,18 @@ export const getData = async (onSuccess, onFail) => {
     onFail(error);
   }
 };
+
+export const sendData = async (onSuccess, onFail, body) => {
+  try {
+    const response = await fetch(BASE_URL, {method: 'POST', body});
+
+    if (!response.ok) {
+      throw new Error(`${response.status} ${response.statusText}`);
+    }
+
+    onSuccess();
+
+  } catch(error) {
+    onFail(error);
+  }
+};
