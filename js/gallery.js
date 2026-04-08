@@ -1,6 +1,7 @@
 import {getPicture} from './picture';
 import {renderBigPicture} from './big-picture';
 import {applyFilter} from './filter';
+import {debounce} from './utils';
 
 const picturesElement = document.querySelector('.pictures');
 const imgFiltersFormElement = document.querySelector('.img-filters__form');
@@ -18,12 +19,12 @@ const createGallery = (pictures) => {
   return fragment;
 };
 
-const filterPictures = (pictures, id) => {
+const filterPictures = debounce((pictures, id) => {
   picturesElement.querySelectorAll('.picture')
     .forEach((element) => element.remove());
 
   picturesElement.append(createGallery(applyFilter(pictures, id)));
-};
+});
 
 const onPictureClick = (pictures) => (evt) => {
   const pictureElement = evt.target.closest('.picture');
