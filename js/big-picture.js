@@ -1,5 +1,5 @@
-import {addEscapeEvent} from './utils';
-import {COMMENTS_PER_LOAD} from './const';
+import {addEscapeEvent} from './utils.js';
+import {COMMENTS_PER_LOAD} from './const.js';
 
 const bigPictureElement = document.querySelector('.big-picture');
 const socialCommentsElement = bigPictureElement.querySelector('.social__comments');

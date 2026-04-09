@@ -1,9 +1,9 @@
-import {addEscapeEvent} from './utils';
-import {resetValidation, setValidation} from './validation';
-import {activateImageScale, deactivateImageScale} from './image-scale';
-import {activateImageEffect, deactivateImageEffect} from './image-effect';
-import {uploadFailMessage, uploadSuccessMessage} from './messages';
-import {sendData} from './api';
+import {addEscapeEvent} from './utils.js';
+import {resetValidation, setValidation} from './validation.js';
+import {activateImageScale, deactivateImageScale} from './image-scale.js';
+import {activateImageEffect, deactivateImageEffect} from './image-effect.js';
+import {uploadFailMessage, uploadSuccessMessage} from './messages.js';
+import {sendData} from './api.js';
 
 const uploadOverlayElement = document.querySelector('.img-upload__overlay');
 const imageFormElement = document.querySelector('#upload-select-image');

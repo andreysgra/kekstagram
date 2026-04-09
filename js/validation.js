@@ -1,5 +1,5 @@
-import {COMMENT_MAX_LENGTH, ErrorMessage, HASHTAG_MAX_LENGTH, HASHTAGS_MAX_COUNT, VALID_SYMBOLS} from './const';
-import {checkStringLength} from './utils';
+import {COMMENT_MAX_LENGTH, ErrorMessage, HASHTAG_MAX_LENGTH, HASHTAGS_MAX_COUNT, VALID_SYMBOLS} from './const.js';
+import {checkStringLength} from './utils.js';
 
 const imageFormElement = document.querySelector('#upload-select-image');
 
