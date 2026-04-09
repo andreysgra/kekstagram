@@ -1,7 +1,7 @@
-import {getPicture} from './picture';
-import {renderBigPicture} from './big-picture';
-import {applyFilter} from './filter';
-import {debounce} from './utils';
+import {getPicture} from './picture.js';
+import {renderBigPicture} from './big-picture.js';
+import {applyFilter} from './filter.js';
+import {debounce} from './utils.js';
 
 const picturesElement = document.querySelector('.pictures');
 const imgFiltersFormElement = document.querySelector('.img-filters__form');

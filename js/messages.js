@@ -1,4 +1,4 @@
-import {addEscapeEvent} from './utils';
+import {addEscapeEvent} from './utils.js';
 
 const ALERT_SHOW_TIME = 5000;
 

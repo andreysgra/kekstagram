@@ -1,4 +1,4 @@
-import {shuffleArray} from './utils';
+import {shuffleArray} from './utils.js';
 
 const PICTURES_NUMBER = 10;
 
