@@ -11,6 +11,10 @@ const closeButtonElement = imageFormElement.querySelector('#upload-cancel');
 const hashtagsElement = imageFormElement.querySelector('.text__hashtags');
 const commentElement = imageFormElement.querySelector('.text__description');
 const submitButtonElement = imageFormElement.querySelector('.img-upload__submit');
+const imagePreviewElement = imageFormElement.querySelector('.img-upload__preview img');
+const effectPreviewElements = imageFormElement.querySelectorAll('.effects__preview');
+
+const FILE_TYPES = ['jpg', 'jpeg', 'png'];
 
 const isTextElementFocused = () => document.activeElement === hashtagsElement ||
   document.activeElement === commentElement;
@@ -23,7 +27,36 @@ const enableSubmitButton = () => {
   submitButtonElement.disabled = false;
 };
 
-const onUploadFileChange = () => openModal();
+const isValidFileType = (file) => {
+  const fileName = file.name.toLowerCase();
+
+  return FILE_TYPES.some((type) => fileName.endsWith(type));
+};
+
+const addImagePreview = (file) => {
+  const reader = new FileReader();
+
+  reader.addEventListener('load', () => {
+    imagePreviewElement.src = reader.result;
+
+    effectPreviewElements.forEach((element) => {
+      element.style.backgroundImage = `url(${reader.result})`;
+    });
+  });
+
+  reader.readAsDataURL(file);
+};
+
+const onUploadFileChange = () => {
+  const file = imageFormElement.filename.files[0];
+
+  if (!isValidFileType(file)) {
+    return;
+  }
+
+  addImagePreview(file);
+  openModal();
+};
 
 const onCloseButtonClick = () => closeModal();
 
